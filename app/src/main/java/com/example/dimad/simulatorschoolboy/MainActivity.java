@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.startGameButton:
                         i = new Intent(MainActivity.this, GameActivity.class);
-                        i.putExtra("name",playerName.getText().toString());
+                        i.putExtra("name",""+playerName.getText());
                         startActivity(i);
                         break;
 
@@ -43,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
 
+    }
+    @Override
+    public void onBackPressed() {
+        // do nothing
     }
 }

@@ -10,8 +10,8 @@ public class Character {
     public String name;
 
     public Character (String name) {
-        H = 40;
-        T = 40;
+        H = 20;
+        T = 20;
         this.name = name;
     }
 }
