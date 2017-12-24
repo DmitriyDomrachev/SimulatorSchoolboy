@@ -29,7 +29,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Хорошо погуляли. Главное – не забыть завтра свое имя. Пожалуй, запишу…"
+        android:text="Хорошо погуляли... Главное – не забыть завтра свое имя. Пожалуй, запишу…"
         android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="30sp"

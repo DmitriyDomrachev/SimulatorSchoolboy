@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static com.example.dimad.simulatorschoolboy.GameActivity.story;
+
 public class InfoActivity extends AppCompatActivity {
     Button back;
     public static TextView hack;
@@ -27,6 +29,7 @@ public class InfoActivity extends AppCompatActivity {
                     case R.id.backGameButton:
                         i = new Intent(InfoActivity.this, GameActivity.class);
                         startActivity(i);
+
                         break;
 
                     default:
@@ -37,5 +40,9 @@ public class InfoActivity extends AppCompatActivity {
         back.setOnClickListener(listener);
         think.setText(String.valueOf(GameActivity.player.T));
         hack.setText(String.valueOf(GameActivity.player.H));
+    }
+    protected void onResume(){
+        super.onResume();
+        if (GameActivity.finish) finish();
     }
 }

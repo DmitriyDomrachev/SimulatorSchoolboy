@@ -14,7 +14,7 @@ public class Story {
     static Random rnd = new Random(System.currentTimeMillis());
     public Situation start_story;
     public Situation current_situation;
-    private static int stor = 0;
+    private int storyNum = 0;
     Story() {
         Log.d("test", "создалась история");
         start_story = new Situation(
@@ -86,19 +86,19 @@ public class Story {
     public void go(int num, int H, int T) {
 
 
-            Log.d("test", "go story, numberOfSituation:"+stor);
-            if (stor<2){
-            current_situation = start_story.direction[stor][num - 1][0];}
-            else if (stor == 2 && (num-1)==0){
-                current_situation = start_story.direction[stor][num - 1][luck(T)];
-            } else if (stor == 2 && (num-1)==1){
-                current_situation = start_story.direction[stor][num - 1][luck(H)];
-            }else if (stor == 3 && (num-1)==0){
-                current_situation = start_story.direction[stor][num - 1][luck(50)];
-            } else if (stor == 3 && (num-1)==1){
-                current_situation = start_story.direction[stor][num - 1][luck(50)];
+            Log.d("test", "go story, numberOfSituation:"+storyNum);
+            if (storyNum<2){
+            current_situation = start_story.direction[storyNum][num - 1][0];}
+            else if (storyNum == 2 && (num-1)==0){
+                current_situation = start_story.direction[storyNum][num - 1][luck(T)];
+            } else if (storyNum == 2 && (num-1)==1){
+                current_situation = start_story.direction[storyNum][num - 1][luck(H)];
+            }else if (storyNum == 3 && (num-1)==0){
+                current_situation = start_story.direction[storyNum][num - 1][luck(50)];
+            } else if (storyNum == 3 && (num-1)==1){
+                current_situation = start_story.direction[storyNum][num - 1][luck(50)];
             }
-        stor+=1;
+        storyNum+=1;
     }
 
     private int luck(int value){

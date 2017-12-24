@@ -7,17 +7,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
     private static TextView titleTextView;
     private static TextView situationTextView;
     public static Character player;
-    private static boolean first = true, count = false;
+    public static boolean first = true, count = false;
     private static int ans;
     public static int numberOfStory = 0;
     public static Story story;
     Button firstAns, secondAns, statist;
     private static String name = "";
+    public static boolean finish = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +93,12 @@ public class GameActivity extends AppCompatActivity {
                 player.H += story.current_situation.dH;
                 player.T += story.current_situation.dT;
                 count = false;
+                if (story.current_situation.dH !=0)
+                    Toast.makeText(getBaseContext(), "Владение пк + "+story.current_situation.dH+" %",
+                            Toast.LENGTH_SHORT).show();
+                if (story.current_situation.dT !=0)
+                    Toast.makeText(getBaseContext(), "Школьные знания + "+story.current_situation.dT+" %",
+                            Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -100,12 +108,14 @@ public class GameActivity extends AppCompatActivity {
         Log.d("test", "go from game activity");
         Log.d("test", "numberOfSituation: " + numberOfStory);
         story.go(num, player.H, player.T);
-        if (story.current_situation.variants == 0) {
+        if (story.current_situation.variants == 0) finish = true;
+        if (finish) {        //завершение истории
             Log.d("test", "конец");
             Intent e = new Intent(GameActivity.this, EndActivity.class);
             e.putExtra("text",""+story.current_situation.text);
             e.putExtra("name",""+name);
             startActivity(e);
+            finish();
         }
         count = true;
         Log.d("test", "история: " + story.current_situation.direction);

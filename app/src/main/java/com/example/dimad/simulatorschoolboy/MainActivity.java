@@ -1,6 +1,8 @@
 package com.example.dimad.simulatorschoolboy;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,25 @@ public class MainActivity extends AppCompatActivity {
         playerName = findViewById(R.id.nameEditText);
         PlayerName = String.valueOf(playerName.getText());
         startGame = findViewById(R.id.startGameButton);
+
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Кто ты по жизни")
+                .setMessage("Ты - ученик вечерней школы №48 “ДЛЯ ОСОБЕННЫХ ЛЮДЕЙ”")
+                .setCancelable(false)
+                .setNegativeButton("ОК, все плохо",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
+
+
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         i = new Intent(MainActivity.this, GameActivity.class);
                         i.putExtra("name",""+playerName.getText());
                         startActivity(i);
+                        finish();
                         break;
 
                     default:
